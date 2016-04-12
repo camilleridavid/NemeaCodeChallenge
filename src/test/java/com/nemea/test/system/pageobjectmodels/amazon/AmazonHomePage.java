@@ -26,8 +26,7 @@ public class AmazonHomePage {
      * @return The <code>AmazonHomePage</code> instance.
      */
     public AmazonHomePage enterSearchText(String searchText) {
-        WebElement search = Driver.getWebDriver().findElement(By.name("site-search"));
-        search.findElement(By.id("twotabsearchtextbox")).sendKeys(searchText);
+        getSiteSearch().findElement(By.id("twotabsearchtextbox")).sendKeys(searchText);
         return this;
     }
 
@@ -37,8 +36,7 @@ public class AmazonHomePage {
      * @return The <code>AmazonHomePage</code> instance.
      */
     public AmazonHomePage clickSearchButton() {
-        WebElement search = Driver.getWebDriver().findElement(By.name("site-search"));
-        search.findElement(By.className("nav-input")).click();
+        getSiteSearch().findElement(By.className("nav-input")).click();
         return this;
     }
 
@@ -59,5 +57,14 @@ public class AmazonHomePage {
      */
     public String getNumberOfItemsInTopNavBasket() {
         return Driver.getWebDriver().findElement(By.id("nav-cart-count")).getText();
+    }
+
+    /**
+     * Retrieves and returns the Amazon site search element.
+     *
+     * @return A <code>WebElement</code> with the site search element.
+     */
+    private WebElement getSiteSearch() {
+        return Driver.getWebDriver().findElement(By.name("site-search"));
     }
 }
