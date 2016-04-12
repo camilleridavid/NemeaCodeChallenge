@@ -1,4 +1,4 @@
-# Nemea Code Challenge [![Build Status](http://40.85.141.124:8080/buildStatus/icon?job=Nemea%20Run%20Unit%20Tests)](http://40.85.141.124:8080/view/Nemea/job/Nemea%20Run%20Unit%20Tests/)
+# Nemea Code Challenge
 
 ### Git repository
 
@@ -44,12 +44,12 @@ Password: nemea
   
 *Builds:*
 
-1. **Nemea Publish Javadoc**
+1. **Nemea Publish Javadoc** [![Build Status](http://40.85.141.124:8080/buildStatus/icon?job=Nemea Publish Javadoc)](http://40.85.141.124:8080/view/Nemea/job/Nemea%20Publish%20Javadoc/)
     * Polls Git every 15 minutes and initialises the job if there were any changes in the codebase.  
     * It simply builds the code and then generates the Javadoc.
     * To view the Javadoc, click on the Javadoc link at the top of the job page.
 
-2. **Nemea Run System Tests**
+2. **Nemea Run System Tests** [![Build Status](http://40.85.141.124:8080/buildStatus/icon?job=Nemea Run System Tests)](http://40.85.141.124:8080/view/Nemea/job/Nemea%20Run%20System%20Tests/)
     * Job is set to run periodically every hour on all days.
     * It builds the code and initialises the Cucumber tests.
     * Test results are shown in 3 distinct reports:
@@ -57,7 +57,7 @@ Password: nemea
         * HTML report created by Cucumber, that can be accessed from the *Latest Cucumber Report* link in the job page;
         * HTML report created by a Jenkins Cucumber plugin, that can be accessed from the *Cucumber Reports* link in the job page.
 
-3. **Nemea Run Unit Tests**
+3. **Nemea Run Unit Tests** [![Build Status](http://40.85.141.124:8080/buildStatus/icon?job=Nemea%20Run%20Unit%20Tests)](http://40.85.141.124:8080/view/Nemea/job/Nemea%20Run%20Unit%20Tests/)
     * Polls Git every 15 minutes and initialises the job if there were any changes in the codebase.  
     * It builds the code and then runs the unit tests for the `Line` class.
     * *Test Result Trend* is shown in the job page, with more details in the *Latest Test Result* link.
