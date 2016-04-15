@@ -62,6 +62,8 @@ public class CucumberBeforeAfter {
             driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
             // Sets the WebDriver instantiated by Spring into a static context
             Driver.setWebDriver(driver);
+            // Retrieves main window handle in case new windows are opened - in order to be able to refocus on main window
+            DriverWindowHelper.retrieveMainWindowHandle();
 
             isSetupExecuted = true;
         }

@@ -1,5 +1,6 @@
 package com.nemea.test.system.stepdefinitions;
 
+import com.nemea.test.system.helper.DriverWindowHelper;
 import com.nemea.test.system.pageobjectmodels.amazon.*;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -68,7 +69,7 @@ public class AmazonSteps {
      * @param resultIndex The index of the item to be selected from the results.
      */
     @When("^I select the (\\d+)(?:st|nd|rd|th) result$")
-    public void iSelectTheFirstResult(int resultIndex) {
+    public void iSelectTheResult(int resultIndex) {
         AmazonSearchResultPage amazonSearchResultPage = new AmazonSearchResultPage();
         titleInSearchResults = amazonSearchResultPage.getResultItemTitleWithIndex(resultIndex);
         amazonSearchResultPage.clickResultItemWithIndex(resultIndex);
@@ -79,6 +80,11 @@ public class AmazonSteps {
      */
     @When("^I add the current item to the Basket$")
     public void iAddTheCurrentItemToTheBasket() {
+        // Handles an anomaly where sometimes the product page is opened in a new window.
+        // If there are more than just the main window handle, focus is shifted on the new window.
+        // If there is just one window, focus remains on the main window.
+        DriverWindowHelper.focusOnNextAvailableWindowHandle();
+
         AmazonItemPage amazonItemPage = new AmazonItemPage();
         assertEquals(titleInSearchResults, amazonItemPage.getItemTitle());
         amazonItemPage.addItemToBasket();
@@ -99,6 +105,9 @@ public class AmazonSteps {
      */
     @When("^I access the Basket$")
     public void iAccessTheBasket() {
+        // Set focus back to the main original window
+        DriverWindowHelper.focusOnMainWindowHandle();
+
         new AmazonHomePage().clickBasket();
     }
 
